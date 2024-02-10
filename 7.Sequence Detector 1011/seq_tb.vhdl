@@ -26,7 +26,7 @@ begin
     -- Clock process
     process
     begin
-        while now < 100 ns loop  -- Run the clock for 100 ns
+        while now < 100 ns loop  
             clk <= '0';
             wait for CLK_PERIOD / 2;
             clk <= '1';

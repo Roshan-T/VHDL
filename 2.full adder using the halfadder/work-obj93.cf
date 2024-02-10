@@ -1,0 +1,9 @@
+v 4
+file . "full_adder_tb.vhdl" "faede1062be6f46a003ea9982fc8ec8a68a6fc38" "20240210063838.895":
+  entity full_adder_tb at 1( 0) + 0 on 21;
+  architecture tb_arch of full_adder_tb at 7( 94) + 0 on 22;
+file . "full_adder.vhdl" "74cfede85feb4757e0903afa23b552c14e0682e2" "20240210063838.827":
+  entity halfadder at 1( 0) + 0 on 17;
+  architecture ha of halfadder at 11( 171) + 0 on 18;
+  entity fulladder at 17( 267) + 0 on 19;
+  architecture ha_fulladder of fulladder at 26( 439) + 0 on 20;

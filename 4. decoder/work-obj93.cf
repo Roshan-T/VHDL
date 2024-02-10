@@ -1,0 +1,7 @@
+v 4
+file . "decoder_tb.vhdl" "27c7fabd21ba49d5022924d3b32e0c889db53e4c" "20240210081316.200":
+  entity decoder_tb at 1( 0) + 0 on 13;
+  architecture tb_arch of decoder_tb at 8( 90) + 0 on 14;
+file . "decoder.vhdl" "f3ce8cf86eee74e7b6f0ec3c5085c4c9202c9a94" "20240210081316.147":
+  entity decoder24 at 1( 0) + 0 on 11;
+  architecture deco of decoder24 at 11( 196) + 0 on 12;

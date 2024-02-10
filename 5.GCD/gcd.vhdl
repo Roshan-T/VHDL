@@ -1,71 +1,71 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
 
-entity gcd is
-    Port ( RESET : in  STD_LOGIC;
-           CLK : in  STD_LOGIC;
-           GO : in  STD_LOGIC;
-           NUM1 : in  INTEGER;
-           NUM2 : in  INTEGER;
-           GCDN : out  INTEGER);
-end gcd;
+entity fsmgcd is
 
-architecture Behavioral of GCD is
+port(
+    clk, reset: in std_logic;
+	A, B: in integer;
+	GCD: out integer
+);
 
-type state is (START,INPUT,CHECK,UPDATE_X,UPDATE_Y,OUTPUT);
+end fsmgcd;
 
-signal PS,NS:state;
-
+architecture behavior of fsmgcd is
+    type state is (start, input, output, check, updatex, updatey);
+    signal current_state, next_state: state;
 begin
 
-seq_proc:process(CLK,GO,RESET)
-begin
-if (GO='1') then
-    if (RESET = '1') then 
-	   PS<=START;
-	 elsif (rising_edge(CLK)) then 
-	   PS<=NS;
-	 end if;
-end if;
-end process seq_proc;
+    state_register: process (clk, reset) 
+    begin
+        if reset = '1' then
+            current_state <= start;
+        elsif rising_edge(clk) then
+            current_state <= next_state;
+        end if;
+    end process;
 
-comb_proc: process(NUM1,NUM2,PS) variable X,Y:integer;
+    compute: process(a, b, current_state)
+        variable x, y: integer;
+    begin
 
-begin
+        case current_state is
+            when start =>
+                next_state <= input;
+                
+            when input =>
+                x := a;
+                y := b;
+                next_state <= check;
+               
+            when check =>
+                if x < y then
+                    next_state <= updatey;
+               
+                elsif y < x then
+                    next_state <= updatex;
+               
+                else
+                    next_state <= output;
+              
+                end if;
+            when updatex =>
+                
+                x := x - y;
+                next_state <= check;
+            when updatey =>
+               
+                y := y - x;
+                next_state <= check;
+            when output =>
+              
+                gcd <= x;
+                next_state <= start;
+            when others =>
+                
+                next_state <= start;
+        end case;
 
-case PS is
+    end process compute;
 
- when START=>
-     GCDN<=0;
-	  NS<=INPUT;
-
- when INPUT=>
-     X:=NUM1;
-     Y:=NUM2;
-     NS<=CHECK;	  
-	  
- when CHECK=>
-     if (X>Y) then NS<=UPDATE_X;
-	  elsif(X<Y) then NS<=UPDATE_Y;
-	  else NS<=OUTPUT;
-	  end if;
-	  
- when UPDATE_X=>
-     X:=X-Y;
-     NS<=CHECK;
-	  
- when UPDATE_Y=>
-     Y:=Y-X;
-     NS<=CHECK;
-	  
- when OUTPUT=>
-     GCDN<=X;
-	  NS<=INPUT;
-	  
- when OTHERS=>
-     GCDN<=0;
-     NS<=INPUT;	  
-	  
-end case;
-end process comb_proc;
-end Behavioral;
+end behavior; 

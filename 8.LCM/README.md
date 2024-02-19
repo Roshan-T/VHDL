@@ -21,6 +21,9 @@ This VHDL code calculates the Least Common Multiple (LCM) of two input integers,
 ![lcm_wavefrom](https://github.com/Roshan-T/VHDL/assets/82012823/50a01d98-e31b-42bc-9c3c-ba1e12204e90)
 
 
+## FSM 
+![lcm](https://github.com/Roshan-T/VHDL/assets/82012823/54ec84ac-2bc1-4c39-ad8b-a8d46483a033)
+
 
 
 ## Implementation Details

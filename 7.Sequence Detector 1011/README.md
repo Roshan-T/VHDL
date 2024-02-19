@@ -19,6 +19,12 @@ This VHDL code implements a sequence detector that recognizes a specific sequenc
 
 ![seq_wavefrom](https://github.com/Roshan-T/VHDL/assets/82012823/0e976d66-db28-4f29-80aa-d90493f7e59a)
 
+## FSM
+
+
+![Sequence](https://github.com/Roshan-T/VHDL/assets/82012823/7d66642a-8c95-4326-854c-9950f7760b96)
+
+
 
 ## Implementation Details
 - The process statement named `state_register` is sensitive to changes in the clock (clk) and reset (reset) signals. It updates the current state of the state machine based on the next state determined by the other process.

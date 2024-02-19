@@ -14,8 +14,7 @@ begin
     Carry <= A and B;
 end ha;
 
-library IEEE;
-use IEEE.std_logic_1164.all;
+
 entity fulladder is 
     port (
         A, B, C: in std_logic;
